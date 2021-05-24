@@ -1,303 +1,48 @@
-파이썬 라이브러리를 활용한 데이터분석
+# Python for Data Analysis, 2nd Edition
 
-CHAPTER 1 시작하기 전에  
-  1.1 이 책은?   
-  1.2 왜 데이터 분석을 위한 파이썬인가?   
-    1.2.1 접착제처럼 사용하는 파이썬   
-    1.2.2 한 가지 언어만 사용   
-    1.2.3 파이썬을 사용하면 안 되는 경우   
-  1.3 필수 파이썬 라이브러리   
-    1.3.1 NumPy   
-    1.3.2 pandas   
-    1.3.3 matplotlib   
-    1.3.4 IPython   
-    1.3.5 SciPy   
-  1.4 설치와 설정   
-    1.4.1 윈도우   
-    1.4.2 애플 OS X   
-    1.4.3 리눅스   
-    1.4.4 파이썬 2.x와 파이썬 3.x   
-    1.4.5 통합 개발 환경   
-  1.5 커뮤니티와 컨퍼런스   
-  1.6 이 책을 살펴보는 방법   
-    1.6.1 예제 코드   
-    1.6.2 예제에 사용된 데이터   
-    1.6.3 import 컨벤션   
-    1.6.4 용어   
-  1.7 감사의 말  
+Materials and IPython notebooks for "Python for Data Analysis" by Wes McKinney,
+published by O'Reilly Media
 
- 
- 
-CHAPTER 2 사례 소개  
-  2.1 bit.ly의 1.usa.gov 데이터   
-    2.1.1 순수 파이썬으로 표준시간대 세어보기   
-    2.1.2 pandas로 표준시간대 세어보기   
-  2.2 MovieLens의 영화 평점 데이터   
-    2.2.1 평점 차이 구하기   
-  2.3 신생아 이름   
-    2.3.1 이름 유행 분석   
-  2.4 맺음말  
+[Buy the book on Amazon][1]
 
- 
+<a href="https://notebooks.azure.com/import/gh/wesm/pydata-book"><img src="https://notebooks.azure.com/launch.png" /></a>
 
-CHAPTER 3 IPython 소개  
-  3.1 IPython 기본   
-    3.1.1 탭 자동 완성   
-    3.1.2 자기관찰   
-    3.1.3 %run 명령어   
-    3.1.4 클립보드에 있는 코드 실행하기   
-    3.1.5 키보드 단축키   
-    3.1.6 예외와 트레이스백   
-    3.1.7 매직 명령어   
-    3.1.8 Qt 기반의 GUI 콘솔   
-    3.1.9 Pylab 모드와 Matplolib 통합   
-  3.2 명령어 히스토리 사용하기   
-    3.2.1 명령어 검색과 재사용   
-    3.2.2 입·출력 변수   
-    3.2.3 입·출력 기록하기   
-  3.3 운영체제와 함께 사용하기   
-    3.3.1 셸 명령어와 별칭   
-    3.3.2 디렉터리 북마크 시스템   
-  3.4 소프트웨어 개발 도구   
-    3.4.1 인터랙티브 디버거   
-    3.4.2 코드 시간 측정: %time과 %timeit   
-    3.4.3 기본적인 프로파일링: %prun과 %run -p   
-    3.4.4 함수의 각 줄마다 프로파일링하기    
-  3.5 IPython HTML 노트북   
-  3.6 IPython을 사용한 제품 개발을 위한 팁   
-    3.6.1 모듈 의존성 리로딩하기   
-    3.6.2 코드 설계 팁   
-  3.7 IPython 고급 기능   
-    3.7.1 IPython 친화적인 클래스 만들기   
-    3.7.2 프로파일과 설정   
-  3.8 감사의 글  
+Follow Wes on Twitter: [![Twitter Follow](https://img.shields.io/twitter/follow/wesmckinn.svg?style=social&label=Follow)](https://twitter.com/wesmckinn)
 
- 
+# 1st Edition Readers
 
-CHAPTER 4 NumPy 기본: 배열과 벡터 계산  
-  4.1 NumPy ndarray: 다차원 배열 객체   
-    4.1.1 ndarray 생성   
-    4.1.2 ndarray의 자료형   
-    4.1.3 배열과 스칼라 간의 연산   
-    4.1.4 색인과 슬라이싱 기초   
-    4.1.5 불리언 색인   
-    4.1.6 팬시 색인   
-    4.1.7 배열 전치와 축 바꾸기   
-  4.2 유니버설 함수   
-  4.3 배열을 사용한 데이터 처리   
-    4.3.1 배열연산으로 조건절 표현하기   
-    4.3.2 수학 메서드와 통계 메서드   
-    4.3.3 불리언 배열을 위한 메서드   
-    4.3.4 정렬   
-    4.3.5 집합 함수   
-  4.4 배열의 파일 입·출력   
-    4.4.1 배열을 바이너리 형식으로 디스크에 저장하기   
-    4.4.2 텍스트 파일 불러오기와 저장하기   
-  4.5 선형대수   
-  4.6 난수 생성   
-  4.7 계단 오르내리기 예제   
-    4.7.1 한 번에 계단 오르내리기 시뮬레이션하기  
+If you are reading the [1st Edition][1] (published in 2012), please find the
+reorganized book materials on the [`1st-edition` branch][2].
 
- 
+# Translations
 
-CHAPTER 5 pandas 시작하기  
-  5.1 pandas 자료 구조 소개   
-    5.1.1 Series   
-    5.1.2 DataFrame   
-    5.1.3 색인 객체   
-  5.2 핵심 기능   
-    5.2.1 재색인   
-    5.2.2 하나의 로우 또는 칼럼 삭제하기   
-    5.2.3 색인하기, 선택하기, 거르기   
-    5.2.4 산술연산과 데이터 정렬   
-    5.2.5 함수 적용과 매핑   
-    5.2.6 정렬과 순위   
-    5.2.7 중복 색인   
-  5.3 기술통계 계산과 요약   
-    5.3.1 상관관계와 공분산   
-    5.3.2 유일 값, 값 세기, 멤버십   
-  5.4 누락된 데이터 처리하기   
-    5.4.1 누락된 데이터 골라내기   
-    5.4.2 누락된 값 채우기   
-  5.5 계층적 색인   
-    5.5.1 계층 순서 바꾸고 정렬하기   
-    5.5.2 단계별 요약통계   
-    5.5.3 DataFrame의 칼럼 사용하기   
-  5.6 pandas와 관련된 기타 주제   
-    5.6.1 정수 색인   
-    5.6.2 Panel 데이터  
+* [Chinese][3] by Xu Liang
 
- 
+## IPython Notebooks:
 
-CHAPTER 6 데이터 로딩, 저장, 파일 형식  
-  6.1 텍스트 파일 이용하는 방법   
-    6.1.1 텍스트 파일 조금씩 읽어오기   
-    6.1.2 데이터를 텍스트 형식으로 기록하기   
-    6.1.3 수동으로 구분 형식 처리하기   
-    6.1.4 JSON 데이터   
-    6.1.5 XML과 HTML: 웹 내용 긁어오기   
-  6.2 이진 데이터 형식   
-    6.2.1 HDF5 형식 사용하기   
-    6.2.2 마이크로소프트 엑셀 파일에서 데이터 읽어오기   
-  6.3 HTML, 웹 API와 함께 사용하기   
-  6.4 데이터베이스와 함께 사용하기   
-    6.4.1 MongoDB에 데이터 저장하고 불러오기  
+* [Chapter 2: Python Language Basics, IPython, and Jupyter Notebooks](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch02.ipynb)
+* [Chapter 3: Built-in Data Structures, Functions, and Files](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch03.ipynb)
+* [Chapter 4: NumPy Basics: Arrays and Vectorized Computation](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch04.ipynb)
+* [Chapter 5: Getting Started with pandas](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch05.ipynb)
+* [Chapter 6: Data Loading, Storage, and File Formats](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch06.ipynb)
+* [Chapter 7: Data Cleaning and Preparation](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch07.ipynb)
+* [Chapter 8: Data Wrangling: Join, Combine, and Reshape](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch08.ipynb)
+* [Chapter 9: Plotting and Visualization](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch09.ipynb)
+* [Chapter 10: Data Aggregation and Group Operations](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch10.ipynb)
+* [Chapter 11: Time Series](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch11.ipynb)
+* [Chapter 12: Advanced pandas](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch12.ipynb)
+* [Chapter 13: Introduction to Modeling Libraries in Python](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch13.ipynb)
+* [Chapter 14: Data Analysis Examples](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/ch14.ipynb)
+* [Appendix A: Advanced NumPy](http://nbviewer.ipython.org/github/pydata/pydata-book/blob/2nd-edition/appa.ipynb)
 
- 
+## License
 
-CHAPTER 7 데이터 준비하기: 다듬기, 변형, 병합  
-  7.1 데이터 합치기   
-    7.1.1 데이터베이스 스타일로 DataFrame 합치기   
-    7.1.2 색인 머지하기   
-    7.1.3 축 따라 이어붙이기    
-    7.1.4 겹치는 데이터 합치기   
-  7.2 재형성과 피벗   
-    7.2.1 계층적 색인으로 재형성하기  
-    7.2.2 피버팅으로 데이터 나열 방식 바꾸기    
-  7.3 데이터 변형   
-    7.3.1 중복 제거하기   
-    7.3.2 함수나 매핑 이용해 데이터 변형하기   
-    7.3.3 값 치환하기   
-    7.3.4 축 색인 이름 바꾸기   
-    7.3.5 개별화와 양자화   
-    7.3.6 특이값 찾아내고 제외하기   
-    7.3.7 치환과 임의 샘플링   
-    7.3.8 표시자/더미 변수   
-  7.4 문자열 다루기   
-    7.4.1 문자열 객체 메서드   
-    7.4.2 정규표현식   
-    7.4.3 pandas의 벡터화된 문자열 함수   
-  7.5 예제: 미국 농무부 음식 데이터베이스  
+### Code
 
- 
+The code in this repository, including all code samples in the notebooks listed
+above, is released under the [MIT license](LICENSE-CODE). Read more at the
+[Open Source Initiative](https://opensource.org/licenses/MIT).
 
-CHAPTER 8 도식화와 시각화 
-  8.1 matplotlib API 간략하게 살펴보기   
-    8.1.1 Figure와 서브플롯   
-    8.1.2 색상, 마커, 선 스타일   
-    8.1.3 눈금, 라벨, 범례   
-    8.1.4 주석과 그림 추가   
-    8.1.5 그래프를 파일로 저장   
-    8.1.6 matplotlib 설정   
-  8.2 pandas에서 그래프 그리기   
-    8.2.1 선 그래프   
-    8.2.2 막대 그래프   
-    8.2.3 히스토그램과 밀도 그래프   
-    8.2.4 산포도   
-  8.3 지도 그리기: 아이티 지진 데이터 시각화하기   
-  8.4 파이썬 시각화 도구 생태계   
-    8.4.1 Chaco    
-    8.4.2 mayavi   
-    8.4.3 기타 패키지   
-    8.4.4 시각화 도구의 미래  
-
- 
-
-CHAPTER 9 데이터 수집과 그룹 연산  
-  9.1 GroupBy 메카닉   
-    9.1.1 그룹 간 순회하기   
-    9.1.2 칼럼 또는 칼럼의 일부만 선택하기   
-    9.1.3 사전과 Series에서 묶기   
-    9.1.4 함수로 묶기   
-    9.1.5 색인 단계로 묶기   
-  9.2 데이터 수집   
-    9.2.1 칼럼에 여러 가지 함수 적용하기   
-    9.2.2 색인되지 않은 형태로 집계된 데이터 반환하기   
-  9.3 그룹별 연산과 변형   
-    9.3.1 apply: 분리-적용-병합   
-    9.3.2 변위치 분석과 버킷 분석   
-    9.3.3 예제: 그룹에 국한된 값으로 누락된 값 채우기   
-    9.3.4 예제: 랜덤 표본과 순열   
-    9.3.5 예제: 그룹 가중 평균과 상관관계   
-    9.3.6 예제: 그룹 상의 선형 회귀   
-  9.4 피벗 테이블과 교차일람표   
-    9.4.1 교차일람표   
-  9.5 예제: 2012년 연방 선거관리위원회 데이터베이스   
-    9.5.1 직장 및 피고용별 기부 통계   
-    9.5.2 기부금액   
-    9.5.3 주별 기부 통계  
-
- 
-
-CHAPTER 10 시계열  
-  10.1 날짜, 시간 자료형, 도구   
-    10.1.1 문자열을 datetime으로 변환하기   
-  10.2 시계열 기초   
-    10.2.1 인덱싱, 선택, 부분 선택   
-    10.2.2 중복된 색인을 갖는 시계열   
-  10.3 날짜 범위, 빈도, 이동   
-    10.3.1 날짜 범위 생성하기   
-    10.3.2 빈도와 날짜 오프셋   
-    10.3.3 데이터 시프트   
-  10.4 시간대 다루기   
-    10.4.1 지역화와 변환   
-    10.4.2 시간대 고려해 Timestamp 객체 다루기   
-    10.4.3 다른 시간대 간의 연산  
-  10.5 기간과 기간 연산   
-    10.5.1 Period의 빈도 변환   
-    10.5.2 분기 빈도   
-    10.5.3 타임스탬프와 기간 서로 변환하기   
-    10.5.4 배열을 이용해 PeriodIndex 생성하기   
-  10.6 리샘플링과 빈도 변환   
-    10.6.1 다운샘플링   
-    10.6.2 업샘플링과 보간     
-    10.6.3 기간 리샘플링   
-  10.7 시계열 그래프   
-  10.8 이동창 기능   
-    10.8.1 지수 가중 함수   
-    10.8.2 이진 이동창 함수   
-    10.8.3 사용자 정의 이동창 함수   
-  10.9 성능과 메모리 사용량에 대한 노트  
-
- 
- 
-CHAPTER 11 금융, 경제 데이터 애플리케이션  
-  11.1 데이터 준비   
-    11.1.1 시계열과 크로스 섹션 정렬   
-    11.1.2 다른 빈도를 가지는 시계열 연산   
-    11.1.3 일별 시간과 현재 최신 데이터 선택하기   
-    11.1.4 데이터와 함께 나누기   
-    11.1.5 수익 지수와 누적 수익   
-  11.2 그룹 변환과 분석   
-    11.2.1 그룹 요인 밝히기   
-    11.2.2 십분위와 사분위 분석   
-  11.3 추가 예제 애플리케이션   
-    11.3.1 신호 경계 분석   
-    11.3.2 선물 계약 롤링   
-    11.3.3 롤링 상관관계와 선형 회귀  
-
- 
-
-CHAPTER 12 고급 NumPy  
-  12.1 ndarray 객체 내부 알아보기   
-  12.1.1 NumPy dtype 구조   
-  12.2 고급 배열 조작 기법   
-    12.2.1 배열 재형성하기   
-    12.2.2 C와 포트란 순서   
-    12.2.3 배열 이어붙이고 나누기   
-    12.2.4 원소 반복시키기: repeat과 tile    
-    12.2.5 팬시 색인: take와 put   
-  12.3 브로드캐스팅   
-    12.3.1 다른 축에 대해 브로드캐스팅하기   
-    12.3.2 브로드캐스팅 이용해 배열에 값 대입하기   
-  12.4 고급 ufunc 사용법   
-    12.4.1 ufunc 인스턴스 메서드   
-    12.4.2 사용자 ufunc   
-  12.5 구조화된 배열과 레코드 배열   
-    12.5.1 중첩된 dtype과 다차원 필드   
-    12.5.2 구조화된 배열을 사용해야 하는 이유   
-    12.5.3 구조화된 배열 다루기: numpy.lib.recfunctions  
-  12.6 정렬에 관하여   
-    12.6.1 간접 정렬: argsort와 lexsort   
-    12.6.2 다른 정렬 알고리즘   
-    12.6.3 numpy.searchsorted: 정렬된 배열에서 원소 찾기  
-  12.7 NumPy matrix 클래스   
-  12.8 고급 배열 입·출력   
-    12.8.1 메모리 맵 파일   
-    12.8.2 HDF5 및 기타 배열 저장 옵션   
-  12.9 성능 팁   
-    12.9.1 인접 메모리의 중요성   
-  12.9.2 기타 성능 옵션: Cython, f2py, C  
-
- 
- 
+[1]: http://amzn.to/2vvBijB
+[2]: https://github.com/wesm/pydata-book/tree/1st-edition
+[3]: https://github.com/BrambleXu/pydata-notebook
