@@ -1,0 +1,10 @@
+2020-02-22 02:02:04,288 - test_log1 - DEBUG - debug
+2020-02-22 02:02:04,290 - test_log1 - INFO - info
+2020-02-22 02:02:04,292 - test_log1 - WARNING - warning
+2020-02-22 02:02:04,294 - test_log1 - ERROR - error
+2020-02-22 02:02:04,298 - test_log1 - CRITICAL - critical
+2020-02-22 02:04:18,268 - test_log1 - DEBUG - debug
+2020-02-22 02:04:18,271 - test_log1 - INFO - info
+2020-02-22 02:04:18,273 - test_log1 - WARNING - warning
+2020-02-22 02:04:18,276 - test_log1 - ERROR - error
+2020-02-22 02:04:18,282 - test_log1 - CRITICAL - critical
