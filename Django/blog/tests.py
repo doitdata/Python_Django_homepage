@@ -16,7 +16,7 @@ class TestView(TestCase):
 
         # 1.3 페이지 타이틀은 Blog다.
         soup = BeautifulSoup(response.content, 'html.parser')
-        self.assertEqual(soup.title.text, ' Blog ')
+        self.assertEqual(soup.title.text, 'Blog')
 
         # 1.4 내비게이션 바가 있다.
         navbar = soup.nav
@@ -79,11 +79,13 @@ class TestView(TestCase):
         self.assertIn('About Me', navbar.text)
 
         # 2.3 첫 번째 포스트의 제목이 웹 브라우저 탭 타이틀에 들어 있다.
+        self.assertIn(post_001.title, soup.title.text)
+
+        # 2.4 첫 번째 포스트의 제목이 포스트 영역에 있다.
         main_area = soup.find('div', id='main-area')
         post_area = main_area.find('div', id='post-area')
         self.assertIn(post_001.title, post_area.text)
 
-        # 2.4 첫 번째 포스트의 제목이 포스트 영역에 있다.
         # 2.5 첫 번째 포스트의 작성자(author)가 포스트 영역에 있다. (아직 구현할 수 없음)
         # 2.6 첫 번째 포스트의 내용(content)이 포스트 영역에 있다.
         self.assertIn(post_001.content, post_area.text)
