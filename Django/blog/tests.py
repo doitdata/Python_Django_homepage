@@ -75,7 +75,7 @@ class TestView(TestCase):
         self.navbar_test(soup)
         self.category_card_test(soup)
 
-        main_area = soup.find('div', id='main_area')
+        main_area = soup.find('div', id='main-area')
         self.assertNotIn('아직 게시물이 없습니다.', main_area.text)
 
         post_001_card = main_area.find('div', id='post-1')
@@ -99,7 +99,7 @@ class TestView(TestCase):
         self.assertEqual(Post.objects.count(), 0)
         response = self.client.get('/blog/')
         soup = BeautifulSoup(response.content, 'html.parser')
-        main_area = soup.find('div', id='main_area')
+        main_area = soup.find('div', id='main-area')
         self.assertIn('아직 게시물이 없습니다.', main_area.text)
 
     def test_post_detail(self):
@@ -129,3 +129,20 @@ class TestView(TestCase):
         self.assertIn(self.user_trump.username.upper(), post_area.text)
         # 2.6 첫 번째 포스트의 내용(content)이 포스트 영역에 있다.
         self.assertIn(self.post_001.content, post_area.text)
+
+    def test_category_page(self):
+        response = self.client.get(self.category_programming.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+
+        soup = BeautifulSoup(response.content, 'html.parser')
+        self.navbar_test(soup)
+        self.category_card_test(soup)
+
+        self.assertIn(self.category_programming.name, soup.h1.text)
+
+        main_area = soup.find('div', id='main-area')
+        self.assertIn(self.category_programming.name, main_area.text)
+        self.assertIn(self.post_001.title, main_area.text)
+        self.assertNotIn(self.post_002.title, main_area.text)
+        self.assertNotIn(self.post_003.title, main_area.text)
+
