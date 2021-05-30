@@ -42,22 +42,23 @@ class TestView(TestCase):
         self.post_003.tags.add(self.tag_python_kor)
         self.post_003.tags.add(self.tag_python)
 
-    def navbar_test(self, soup):
-        navbar = soup.nav
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('About Me', navbar.text)
 
-        logo_btn = navbar.find('a', text='Do It Django')
-        self.assertEqual(logo_btn.attrs['href'], '/')
+def navbar_test(self, soup):
+    navbar = soup.nav
+    self.assertIn('Blog', navbar.text)
+    self.assertIn('About Me', navbar.text)
 
-        home_btn = navbar.find('a', text='Home')
-        self.assertEqual(home_btn.attrs['href'], '/')
+    logo_btn = navbar.find('a', text='Do It Django')
+    self.assertEqual(logo_btn.attrs['href'], '/')
 
-        blog_btn = navbar.find('a', text='Blog')
-        self.assertEqual(blog_btn.attrs['href'], '/blog/')
+    home_btn = navbar.find('a', text='Home')
+    self.assertEqual(home_btn.attrs['href'], '/')
 
-        about_me_btn = navbar.find('a', text='About Me')
-        self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
+    blog_btn = navbar.find('a', text='Blog')
+    self.assertEqual(blog_btn.attrs['href'], '/blog/')
+
+    about_me_btn = navbar.find('a', text='About Me')
+    self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
 
     def category_card_test(self, soup):
         categories_card = soup.find('div', id='categories-card')
