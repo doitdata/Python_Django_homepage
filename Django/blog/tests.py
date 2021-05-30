@@ -42,23 +42,22 @@ class TestView(TestCase):
         self.post_003.tags.add(self.tag_python_kor)
         self.post_003.tags.add(self.tag_python)
 
+    def navbar_test(self, soup):
+        navbar = soup.nav
+        self.assertIn('Blog', navbar.text)
+        self.assertIn('About Me', navbar.text)
 
-def navbar_test(self, soup):
-    navbar = soup.nav
-    self.assertIn('Blog', navbar.text)
-    self.assertIn('About Me', navbar.text)
+        logo_btn = navbar.find('a', text='Do It Django')
+        self.assertEqual(logo_btn.attrs['href'], '/')
 
-    logo_btn = navbar.find('a', text='Do It Django')
-    self.assertEqual(logo_btn.attrs['href'], '/')
+        home_btn = navbar.find('a', text='Home')
+        self.assertEqual(home_btn.attrs['href'], '/')
 
-    home_btn = navbar.find('a', text='Home')
-    self.assertEqual(home_btn.attrs['href'], '/')
+        blog_btn = navbar.find('a', text='Blog')
+        self.assertEqual(blog_btn.attrs['href'], '/blog/')
 
-    blog_btn = navbar.find('a', text='Blog')
-    self.assertEqual(blog_btn.attrs['href'], '/blog/')
-
-    about_me_btn = navbar.find('a', text='About Me')
-    self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
+        about_me_btn = navbar.find('a', text='About Me')
+        self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
 
     def category_card_test(self, soup):
         categories_card = soup.find('div', id='categories-card')
@@ -171,3 +170,29 @@ def navbar_test(self, soup):
         self.assertNotIn(self.post_002.title, main_area.text)
         self.assertNotIn(self.post_003.title, main_area.text)
 
+    def test_create_post(self):
+        # 로그인하지 않으면 status code가 200이면 안된다.
+        response = self.client.get('/blog/create_post/')
+        self.assertNotEqual(response.status_code, 200)
+
+        # 로그인을 한다
+        self.client.login(username='trump', password='dftn7jj7')
+
+        response = self.client.get('/blog/create_post/')
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        self.assertEqual('Create Post - Blog', soup.title.text)
+        main_area = soup.find('div', id='main-area')
+        self.assertIn('Create New Post', main_area.text)
+
+        self.client.post(
+            '/blog/create_post/',
+            {
+                'title': 'Post Form 만들기',
+                'content': "Post Form 페이지를 만듭시다.",
+            }
+        )
+        last_post = Post.objects.last()
+        self.assertEqual(last_post.title, "Post Form 만들기")
+        self.assertEqual(last_post.author.username, 'trump')
