@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}
     {{ post.title }} - Blog
@@ -25,11 +26,12 @@
         {% if user.is_authenticated and user == post.author %}
             <a class="btn btn-info btn-sm float-right" href="/blog/update_post/{{ post.pk }}/" role="'button"><i class="fas fa-pen"> Edit Post</i></a>
         {% endif %}
+
         <!-- Date/Time -->
         <p>{{ post.created_at }}</p>
         <hr/>
 
-        <!-- Preview image figure-->
+        <!-- Preview image -->
         {% if p.head_image %}
         <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head_image" /></figure>
         {% else %}
@@ -65,29 +67,25 @@
         </a>
         {% endif %}
 
-        <section class="mb-5">
-            <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-            <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-            <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-            <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
-        </section>
-    </div>
-
-    <div id="comment-area">
-    <!-- Comments Form -->
-    <div class="card my-4">
-        <h5 class="card-header">Leave a Comment:</h5>
-        <div class="card-body">
-        <form>
-            <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+        <div id="comment-area">
+        <!-- Comments Form -->
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <form id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ comment_form | crispy }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                {% else %}
+                    <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="#" data-toggle="modal" data-target="#loginModal">Log in and leave a comment</a>
+                {% endif %}
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
         </div>
-    </div>
+
         {% if post.comment_set.exists %}
             {% for comment in post.comment_set.iterator %}
                 <!-- Single Comment -->
@@ -101,13 +99,12 @@
                 </div>
             {% endfor %}
         {% endif %}
-
         </div>
         <hr/>
 
                 </div>
 
             </div>
-        </section>
+
 
 {% endblock %}
