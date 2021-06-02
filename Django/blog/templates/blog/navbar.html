@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-{% load static %}
-<html>
-    <head>
-        <title>{% block head_title %}Blog{% endblock %}</title>
-        <link rel = 'stylesheet' href = "{% static 'blog/bootstrap/bootstrap.min.css' %}" media = 'screen'>
-        <script src="https://kit.fontawesome.com/591086c795.js" crossorigin="anonymous"></script>
-    </head>
+<!--{% load static %}-->
+<!--<html>-->
+<!--    <head>-->
+<!--        <title>{% block head_title %}Blog{% endblock %}</title>-->
+<!--        <link rel = 'stylesheet' href = "{% static 'blog/bootstrap/bootstrap.min.css' %}" media = 'screen'>-->
+<!--        <script src="https://kit.fontawesome.com/591086c795.js" crossorigin="anonymous"></script>-->
+<!--    </head>-->
 
     {% load socialaccount %}
 
@@ -36,7 +36,7 @@
                                 {% if user.socialaccount_set.all.0.get_avatar_url %}
                                     <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
                                 {% else %}
-                                    <img class="rounded-circle" src="https://doitdjango.com/avatar/id/165/0a8f102476f848a6/svg/{{ user.email }}">
+                                    <img class="rounded-circle" width="25px" src="https://doitdjango.com/avatar/id/165/0a8f102476f848a6/svg/{{ user.email }}">
                                 {% endif %}
                                 &nbsp;
                                 {{ user.username }}
@@ -56,41 +56,33 @@
             </div>
         </nav>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-        </button>
-
         <!-- Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i>&nbsp Log In</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class = 'row'>
-                        <div class = 'col-md-6'>
-                            < a role="button" class="btn btn-outline-dark btn-block btn-sm" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>&nbsp&nbsp Log in with Google</button>
-                            < a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/login/"><i class="fas fa-envelope-open"></i>&nbsp&nbsp Log in with E-mail</button>
-                        </div>
-
-                        <div class = 'col-md-6'>
-                            < a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/signup/"><i class="fas fa-envelope-open"></i>&nbsp&nbsp Sign up with E-mail</button>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel"> <i class="fas fa-sign-in-alt"></i>&nbsp Log In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>&nbsp&nbsp Log in with Google</a>
+                                <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/login/"><i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/accounts/signup/"><i class="far fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
             </div>
         </div>
-
 
 

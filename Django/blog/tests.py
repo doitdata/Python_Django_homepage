@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from .models import Post, Category, Tag, Comment
 from django.contrib.auth.models import User
 
-
 # Create your tests here.
 class TestView(TestCase):
     def setUp(self):
@@ -81,23 +80,25 @@ class TestView(TestCase):
         self.assertIn(f'미분류 (1)', categories_card.text)
 
     def test_post_list(self):
-        # 포스트가 있는 경우
+        # Post가 있는 경우
         self.assertEqual(Post.objects.count(), 3)
 
         response = self.client.get('/blog/')
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
 
+        self.assertEqual(soup.title.text, 'Blog')
+
         self.navbar_test(soup)
         self.category_card_test(soup)
 
         main_area = soup.find('div', id='main-area')
-        self.assertNotIn('아직 게시물이 없습니다.', main_area.text)
+        self.assertNotIn('아직 게시물이 없습니다', main_area.text)
 
-        post_001_card = main_area.find('div', id='post-1')
-        self.assertIn(self.post_001.title, post_001_card.text)
-        self.assertIn(self.post_001.category.name, post_001_card.text)
-        self.assertIn(self.post_001.author.username.upper(), post_001_card.text)
+        post_001_card = main_area.find('div', id='post-1')  # id가 post-1인 div를 찾아서, 그 안에
+        self.assertIn(self.post_001.title, post_001_card.text)  # title이 있는지
+        self.assertIn(self.post_001.category.name, post_001_card.text)  # category가 있는지
+        self.assertIn(self.post_001.author.username.upper(), post_001_card.text)  # 작성자명이 있는지
         self.assertIn(self.tag_hello.name, post_001_card.text)
         self.assertNotIn(self.tag_python.name, post_001_card.text)
         self.assertNotIn(self.tag_python_kor.name, post_001_card.text)
@@ -118,17 +119,13 @@ class TestView(TestCase):
         self.assertIn(self.tag_python.name, post_003_card.text)
         self.assertIn(self.tag_python_kor.name, post_003_card.text)
 
-        self.assertIn(self.user_trump.username.upper(), main_area.text)
-        self.assertIn(self.user_obama.username.upper(), main_area.text)
-
-        # 포스트가 없는 경우
-
+        # Post가 없는 경우
         Post.objects.all().delete()
         self.assertEqual(Post.objects.count(), 0)
         response = self.client.get('/blog/')
         soup = BeautifulSoup(response.content, 'html.parser')
-        main_area = soup.find('div', id='main-area')
-        self.assertIn('아직 게시물이 없습니다.', main_area.text)
+        main_area = soup.find('div', id='main-area')  # id가 main-area인 div태그를 찾습니다.
+        self.assertIn('아직 게시물이 없습니다', main_area.text)
 
     def test_post_detail(self):
         # 1.2 그 포스트의 url은 '/blog/1/이다.
