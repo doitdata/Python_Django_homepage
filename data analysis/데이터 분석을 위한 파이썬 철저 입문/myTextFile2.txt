@@ -1,3 +1,0 @@
-File read/write test2: line1
-File read/write test2: line2
-File read/write test2: line3
